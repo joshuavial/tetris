@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import App from './components/app.jsx!'
 
-const main = () => {
+function main () {
   const app = document.createElement('div')
 
   document.body.appendChild(app)
