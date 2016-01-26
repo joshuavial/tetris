@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-console.log('working')
+console.log('hello (again)')
 
 const width = window.innerWidth
 const height = window.innerHeight
@@ -24,14 +24,13 @@ const divStyle = {
 class App extends Component {
   constructor (props) {
     super(props)
-    const width = window.innerWidth
-    const height = window.innerHeight
+    
     const cellWidth = 24
-    const widthCount = Math.floor(width / cellWidth)
-    const heightCount = Math.floor(height / cellWidth)
+    const checkWidth = Math.floor(window.innerWidth / cellWidth)
+    const checkHeight = Math.floor(window.innerHeight / cellWidth)
     
     this.state = {
-      board: getBoard(widthCount, heightCount)
+      board: getBoard(checkWidth, checkHeight)
     }
   }
   
@@ -48,7 +47,9 @@ class App extends Component {
         </tr>
       )    
     })
+    
     console.log(board)
+    
     return <div style={divStyle}>
       <table>
         <tbody>
