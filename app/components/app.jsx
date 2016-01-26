@@ -1,15 +1,25 @@
 import React, { Component } from 'react'
+import SquareBlock from '../game/squareBlock'
 
 console.log('hello (again)')
+
+//display a line, L and a Z
+//display blocks in different orientations
+//display blocks of different colours
+
+const blocks = []
+blocks.push(new SquareBlock(5,5))
+console.log(blocks)
+
 
 const width = window.innerWidth
 const height = window.innerHeight
 
-function getBoard (w, h) {
+function getBoard (cellsWide, cellsHigh) {
   const board = []
-  for (let i = 0; i < h; i++) {
+  for (let i = 0; i < cellsHigh; i++) {
     board[i] = []
-    for (let j = 0; j < w; j++) {
+    for (let j = 0; j < cellsWide; j++) {
       board[i][j] = 0
     }
   }
@@ -35,28 +45,28 @@ class App extends Component {
   }
   
   render () {
-    const board = this.state.board
-    const elements = board.map(function (row) {
+    //const board = this.state.board
+    const elements = this.state.board.map(function (row, rowIndex) {
       return (
         <tr className='row'>
           {
-            row.map(function (cell) {
-              return <td></td>
+            row.map(function (cell, cellIndex) {
+              let styles = {}
+              blocks.map(function(block) {
+                if (block.atCoordinate(cellIndex, rowIndex)) {
+                  styles['background-color'] = block.color
+                }
+              })
+              return <td style={styles}></td>
             })
           }
         </tr>
       )    
     })
-    
-    console.log(board)
-    
+
     return <div style={divStyle}>
       <table>
-        <tbody>
-          {
-            elements
-          }
-        </tbody>
+        <tbody> { elements } </tbody>
       </table>
     </div>
   } 
