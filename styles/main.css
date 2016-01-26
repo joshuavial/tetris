@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  border: solid red;
+}
+
+td {
+  border: 1px solid black;
+  padding: 10px;
+}
